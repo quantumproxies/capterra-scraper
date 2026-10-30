@@ -1,0 +1,60 @@
+{
+ "cli": "capterra-scraper",
+ "name": "Capterra Scraper",
+ "version": "0.1.0",
+ "description": "Capterra scraper for Python and the command line: the software products of a Capterra category with vendor, star rating, rating breakdown, sub-scores, review counts, starting price, free trial and paid-placement flag, as JSON or CSV. Free and open source; sign in with your QuanticData account, no proxies or headless browser to run.",
+ "links": {
+  "repo": "https://github.com/quantumproxies/capterra-scraper",
+  "page": "https://quanticdata.io/collectors/capterra-scraper-api/?utm_source=github&utm_medium=cli&utm_campaign=capterra-scraper",
+  "billing": "https://app.quanticdata.io/billing?utm_source=github&utm_medium=cli&utm_campaign=capterra-scraper",
+  "pricing": "https://quanticdata.io/pricing/?utm_source=github&utm_medium=cli&utm_campaign=capterra-scraper"
+ },
+ "commands": [
+  {
+   "name": "products",
+   "collector": "capterra_products",
+   "method": "products",
+   "help": "software products listed in a Capterra category",
+   "description": "Software products from a Capterra category: vendor, rating, rating breakdown, sub-scores, pricing and paid-placement flag.",
+   "positional": "category",
+   "positional_is_list": false,
+   "positional_optional": false,
+   "columns": [
+    "rank",
+    "name",
+    "vendor",
+    "rating",
+    "reviews",
+    "has_free_version",
+    "sponsored"
+   ],
+   "sample": "capterra_products",
+   "inputs": [
+    {
+     "name": "category",
+     "type": "string",
+     "required": true,
+     "description": "Software category as a plain keyword (\"crm\", \"project management\", \"help desk\", \"accounting\"), matched against Capterra's own category index, where an exact name wins (\"crm\" is CRM, not Construction CRM). A Capterra category slug or URL works too.",
+     "arg": "category"
+    },
+    {
+     "name": "country",
+     "type": "string",
+     "required": false,
+     "description": "Country to run the request from, as an ISO 3166-1 alpha-2 code (us, gb, de...).",
+     "arg": "country"
+    },
+    {
+     "name": "max_results",
+     "type": "integer",
+     "required": false,
+     "description": "How many products to deliver at most (1–500). You pay only for delivered products.",
+     "min": 1,
+     "max": 500,
+     "default": 25,
+     "arg": "max_results"
+    }
+   ]
+  }
+ ]
+}
